@@ -7,7 +7,7 @@ The `permiso.collector` module is the link between the firewall and the `permiso
 
 = Requirements =
 
-You must be on a Linux system, with iptables compiled in the kernel (or as a module). You must have support for `IP_QUEUE` (old kernels) or NF_QUEUE (newer kernels).
+You must be on a Linux system, with iptables compiled in the kernel (or as a module) and the CONFIG_NETFILTER_NETLINK set. You must have support for `IP_QUEUE` (old kernels) or NF_QUEUE (newer kernels).
 The Collector uses the [http://woozle.org/~neale/src/ipqueue/ ipqueue] python module or the [http://woozle.org/~neale/src/ipqueue/ nfqueue] python module.
 They are not installable using `easy_install`, so you'll need to download them and install them (gcc is required).
 
