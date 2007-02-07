@@ -11,5 +11,7 @@ You must be on a Linux system, with iptables compiled in the kernel (or as a mod
 The Collector uses the [http://woozle.org/~neale/src/ipqueue/ ipqueue] python module or the [http://woozle.org/~neale/src/ipqueue/ nfqueue] python module.
 They are not installable using `easy_install`, so you'll need to download them and install them (gcc is required).
 
+Note: When compiling the ipqueue module, if you get errors like `ipqueue.c:7:20: libipq.h : Aucun fichier ou répertoire de ce type`, it means you haven't installed the [http://www.netfilter.org/projects/libnetfilter_queue/ netfilter dev libraries].
+
 
 = Details =
