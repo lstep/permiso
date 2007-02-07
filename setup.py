@@ -19,10 +19,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 from setuptools import setup, find_packages
 import sys, os
 
-from permiso import collector
+import permiso.collector
 
 setup(name='permiso.collector',
-      version=collector.__version__,
+      version=permiso.collector.__version__,
       namespace_packages = ['permiso'],
       description="Collector for IP Queue module",
       long_description="""\
@@ -35,7 +35,7 @@ This programs is part of the Permiso Framework. It collects the packets sent fro
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
       include_package_data=True,
       package_data = {
-          'collectordata': ['data/bin/*',],
+          'permiso.collectordata': ['data/bin/*',],
       },
       zip_safe=True,
       install_requires=[
@@ -45,7 +45,7 @@ This programs is part of the Permiso Framework. It collects the packets sent fro
       entry_points="""
       # -*- Entry points: -*-
       [console_scripts]
-      collector-admin = collector.command:main
+      collector-admin = permiso.collector.command:main
       """,
       # Voir http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[

@@ -21,7 +21,7 @@ from pkg_resources import Requirement, resource_filename, resource_string, resou
 
 sys.path.insert(0, os.getcwd())
 
-#from permiso import collector
+import permiso.collector
 
 def main():
     #parser = optparse.OptionParser(usage="%prog", version=expediar.__version__)
@@ -43,7 +43,7 @@ def main():
         sys.path.insert(0, os.path.abspath(os.getcwd()))
 
     from twisted.scripts.twistd import run
-    sys.argv.extend(['-y', resource_filename('expediar','data/bin/collector.tac')])
+    sys.argv.extend(['-y', resource_filename('permiso.collector','data/bin/collector.tac')])
     sys.argv.extend(['--pidfile', '/var/tmp/collector.pid'])
     run()
 
