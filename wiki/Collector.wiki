@@ -1,5 +1,5 @@
+#summary This page is about the permiso.collector module
 #labels Phase-Deploy
-This page is about the permiso.collector module
 
 = Introduction =
 
@@ -13,8 +13,3 @@ They are not installable using `easy_install`, so you'll need to download them a
 
 
 = Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
