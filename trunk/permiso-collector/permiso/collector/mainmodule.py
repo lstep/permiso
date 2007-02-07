@@ -27,7 +27,8 @@ from twisted.python import log
 from twisted.application import service
 from twisted.cred import credentials
 
-from permiso.collecto import iputils
+from permiso.collector import iputils
+from permiso.collector import Cache
 
 import sys,os,ConfigParser,Queue
 import ipqueue
@@ -159,7 +160,7 @@ class CollectionManager(object):
         while self.running:
             p = self.queue.read()
             d = iputils.IP(p[ipqueue.PAYLOAD])
-            srcIP = d.src_ip()
+            source_ip = d.src_ip()
             dstIP = d.dst_ip()
             proto = d.protocol
 
@@ -172,12 +173,12 @@ class CollectionManager(object):
             else:
                 dstPort = 0
 
-            log.msg("proto=%s - ipsrc=%s - ipdst=%s - portdest=%s" % (d.protocol, srcIP, dstIP, dstPort), debug=True)
-            result = self.getAuthFor(ipSrc=srcIP)
+            log.msg("proto=%s - ipsrc=%s - ipdst=%s - portdest=%s" % (d.protocol, source_ip, dstIP, dstPort), debug=True)
+            result = self.getAuthFor(ipSrc=source_ip)
             if result:
                 self.queue.set_verdict(p[0], ipqueue.NF_ACCEPT)
             else:
-                log.msg("Refused proto=%s ipsrc=%s ipdest=%s portdest=%s" % (d.protocol, srcIP, dstIP, dstPort))
+                log.msg("Refused proto=%s ipsrc=%s ipdest=%s portdest=%s" % (d.protocol, source_ip, dstIP, dstPort))
                 self.queue.set_verdict(p[0], ipqueue.NF_DROP)
 
     def getAuthFor(self,ipSrc):
